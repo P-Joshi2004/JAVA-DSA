@@ -49,11 +49,14 @@ public class deleteNthfromend {
     }
     //code to delte nth from from the end
     public static void removeNthNodefromtheEnd(int n){
+        //Create dummy node
         Node dummy=new Node(-1);
         dummy.next=head;
+        //intialize dummy node to respective slow and fast node.
 
         Node fast=dummy;
         Node slow=dummy;
+        //move fast n+1 steps ahead 
         for(int i=0;i<=n;i++){
             fast=fast.next;
         }
@@ -61,9 +64,12 @@ public class deleteNthfromend {
             fast=fast.next;
             slow=slow.next;
         }
+        //discontine the nth node in linked list by discontinuing and liking to next node we remove the nth node.
         Node target=slow.next;
         slow.next=target.next;
+        //update head
         head=dummy.next;
+        //update taill if last node was removed
         if(target==tail){
             tail=slow==dummy?null:slow;
         }
